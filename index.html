@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input id="name" type="text">
+    <input id ="email" type="email">
+    <input id ="pw" type="password">
+    <button id ="btn">Click</button>
+
+    <button id="getdata1">get data</button>
+   
+    
+</body>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script>
+
+    document.querySelector("#btn").addEventListener("click",async()=>{
+        let name=document.querySelector("#name").value;
+        let email=document.querySelector("#email").value;
+        let pw=document.querySelector("#pw").value;
+        console.log(name)
+        console.log(email)
+        console.log(pw)
+        
+        let a= await axios.post("/auth/signup",{name,pw})
+          
+        // let data= await a.JSON()
+        console.log(JSON.parse(a.config.data)) 
+    })
+
+    document.querySelector("#getdata1").addEventListener("click",async()=>{
+       await axios.get("/userData/allUser",{});
+       window.location.href="/userData/allUser"
+    })
+   
+</script>
+</html>

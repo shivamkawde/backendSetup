@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="name"></div>
+    <p id="pw"></p>
+</body>
+<script>
+    let c=[]
+         let a=async()=>{
+             
+          let all= await fetch("userData/allUser");
+          //console.log("jiii");
+          c= await all.json().then((r)=>{
+              console.log(r);
+
+            let di=document.querySelector("#name");
+             for(let i=0;i<r.length;i++)
+             {
+                 console.log(r[i])
+               let p= document.createElement("p");
+               p.innerHTML=r[i].name
+               di.appendChild(p);       
+            
+            }
+
+
+
+            // r.map((e)=>{
+            //    return(
+            //        document.querySelector("#name").innerHTML=e.name
+            //    )})
+
+          });
+     
+          console.log(c); 
+          console.log("helloi 1")
+          console.log("2");
+        }
+
+      a()
+if(c.length!=0){
+
+ 
+}
+
+</script>
+
+</html>
